@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    tools:context="com.example.diak.rock_scissors_paper.MainActivity">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView_human"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="29dp"
+        android:id="@+id/textView"
+        android:text = "A te válaszod"
+        />
+
+    <ImageView
+        android:background="@drawable/rock"
+        android:layout_marginTop="31dp"
+        android:id="@+id/imageView_robot"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="A gép válasza"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView_robot"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp"
+        android:id="@+id/textView2" />
+
+    <Button
+        android:text="Papír"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/button_rock"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/button_paper" />
+
+    <Button
+        android:text="Olló"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/button_paper"
+        android:layout_toRightOf="@+id/imageView_robot"
+        android:layout_toEndOf="@+id/imageView_robot"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:id="@+id/button_scissors" />
+
+    <Button
+        android:text="Kő"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_rock"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/imageView_robot"
+        android:layout_toStartOf="@+id/imageView_robot" />
+
+    <ImageView
+
+        android:id="@id/imageView_human"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/paper"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/imageView_robot"
+        android:layout_alignStart="@+id/imageView_robot" />
+
+    <TextView
+        android:text="Eredmény Ember: 0 Gép: 0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView_score"
+        android:layout_above="@+id/button_paper"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="34dp" />
+
+
+</RelativeLayout>
