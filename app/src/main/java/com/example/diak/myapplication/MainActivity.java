@@ -12,17 +12,16 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button ko,papir,ollo;
+    private Button ko, papir, ollo;
 
     private TextView eredmeny;
 
     private int human_scrore = 0, robot_score = 0;
 
-    private ImageView ember,robot;
-
-    Random r;
+    private ImageView ember, robot;
 
     private String result;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,15 +36,14 @@ public class MainActivity extends AppCompatActivity {
         ember = (ImageView) findViewById(R.id.imageView_human);
         robot = (ImageView) findViewById(R.id.imageView_robot);
 
-        r = new Random();
 
         ko.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ember.setBackgroundResource(R.drawable.rock);
-                //eredmeny.setText("Eredmény Ember: " + human_scrore + " Gép: " + robot_score);
-                robotch();
-
+                String result = robotch("rock");
+                Toast.makeText(MainActivity.this, result, Toast.LENGTH_SHORT).show();
+                eredmeny.setText("Eredmény Ember: " + Integer.toString(human_scrore) + " Robot: " + Integer.toString(robot_score));
             }
         });
 
@@ -53,9 +51,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ember.setBackgroundResource(R.drawable.paper);
-                //eredmeny.setText("Eredmény Ember: " + human_scrore + " Gép: " + robot_score);
-                robotch();
-
+                String result = robotch("paper");
+                Toast.makeText(MainActivity.this, result, Toast.LENGTH_SHORT).show();
+                eredmeny.setText("Eredmény Ember: " + Integer.toString(human_scrore) + " Robot: " + Integer.toString(robot_score));
             }
         });
 
@@ -63,61 +61,61 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ember.setBackgroundResource(R.drawable.scissors);
-                //eredmeny.setText("Eredmény Ember: " + human_scrore + " Gép: " + robot_score);
-                robotch();
-
+                String result = robotch("scissors");
+                Toast.makeText(MainActivity.this, result, Toast.LENGTH_SHORT).show();
+                eredmeny.setText("Eredmény Ember: " + Integer.toString(human_scrore) + " Robot: " + Integer.toString(robot_score));
             }
         });
 
     }
 
-        public void robotch() {
+    public String robotch( String jatekos_valaszt) {
 
-            int a = r.nextInt(3);
+        String robot_valaszt = "";
+        Random r = new Random();
 
-            if (a == 0) {
+        int a = r.nextInt(3);
 
-                        robot.setBackgroundResource(R.drawable.rock);
+        if (a == 0) {
+            robot_valaszt = "rock";
+        } else if (a == 1) {
+            robot_valaszt = "paper";
+        } else if (a == 2) {
+            robot_valaszt = "scissors";
+        }
 
-            } else if (a == 1){
+        if (robot_valaszt == "rock") {
+            robot.setBackgroundResource(R.drawable.rock);
+        } else if (robot_valaszt == "paper") {
+            robot.setBackgroundResource(R.drawable.paper);
+        } else if (robot_valaszt == "scissors") {
+            robot.setBackgroundResource(R.drawable.scissors);
+        }
 
-                        robot.setBackgroundResource(R.drawable.paper);
 
-            } else if (a == 2){
-
-                        robot.setBackgroundResource(R.drawable.scissors);
-
-                    }
-
-            if (ember.equals("rock") && robot.equals("paper")) {
-                result = "Vesztettél";
-                robot_score++;
-            } else if (ember.equals("rock") && robot.equals("scissors")) {
-                result = "Győztél";
-                human_scrore++;
-            } else if (ember.equals("paper") && robot.equals("rock")) {
-                result = "Győztél";
-                human_scrore++;
-            } else if (ember.equals("paper") && robot.equals("scissors")) {
-                result = "Vesztettél";
-                robot_score++;
-            } else if (ember.equals("scissors") && robot.equals("paper")) {
-                result = "Győztél";
-                human_scrore++;
-            } else if (ember.equals("scissors") && robot.equals("rock")) {
-                result = "Vesztettél";
-                robot_score++;
-            } else if (ember.equals("rock") && robot.equals("rock")) {
-                result = "Döntetlen";
-            } else if (ember.equals("paper") && robot.equals("paper")) {
-                result = "Döntetlen";
-            } else if (ember.equals("scissors") && robot.equals("scissors")) {
-                result = "Döntetlen";
-            }
-
-            Toast.makeText(MainActivity.this, result, Toast.LENGTH_SHORT).show();
-
-            }
+        if (robot_valaszt == jatekos_valaszt) {
+            return "Döntettlen";
+        } else if (jatekos_valaszt == "rock" && robot_valaszt == "scissors") {
+            human_scrore++;
+            return  "Győztél";
+        } else if (jatekos_valaszt == "rock" && robot_valaszt == "paper") {
+            robot_score++;
+            return "Vesztettél";
+        } else if (jatekos_valaszt == "scissors" && robot_valaszt == "rock") {
+            robot_score++;
+            return "Vesztettél";
+        } else if (jatekos_valaszt == "scissors" && robot_valaszt == "paper") {
+            human_scrore++;
+            return "Győztél";
+        } else if (jatekos_valaszt == "paper" && robot_valaszt == "rock") {
+            human_scrore++;
+            return "Győztél";
+        } else if (jatekos_valaszt == "paper" && robot_valaszt == "scissors") {
+            robot_score++;
+            return "Vesztettél";
+        }
+        else return "0";
 
     }
 
+}

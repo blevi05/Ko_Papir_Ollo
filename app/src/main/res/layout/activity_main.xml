@@ -79,7 +79,7 @@
         android:layout_alignStart="@+id/imageView_robot" />
 
     <TextView
-        android:text="Eredmény Ember: 0 Gép: 0"
+        android:text="Eredmény Ember: 0 Robot: 0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView_score"
